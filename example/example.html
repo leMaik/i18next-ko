@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>i18next-ko Demo</title>
+  <script src="http://ajax.aspnetcdn.com/ajax/knockout/knockout-3.3.0.js"></script>
+  <script src="../lib/i18next-ko.js"></script>
+</head>
+
+<body>
+  <h1 data-bind="i18n: { 'html': 'title' }"></h1>
+
+  <p>
+    <span data-bind="i18n: 'text'"></span><br/>
+    <select data-bind="value: language">
+      <option value="en">English</option>
+      <option value="de">Deutsch</option>
+    </select>
+  </p>
+
+  <p>
+    <input type="text" data-bind="textInput: name"/><br/>
+    <span data-bind="i18n: { key: 'greet', options: { name: name } }"></span>
+  </p>
+
+  <p>
+    <button data-bind="i18n: { 'html': 'dummyButton', 'title': { key: 'dummyButtonFor', options: { name: name } } }"
+  </p>
+
+  <script language="javascript">
+    i18nextko.init({
+      'en': {
+        'translation': {
+          'title': 'i18next-ko Example',
+          'text': 'This is an example for i18next-ko. Please select a language:',
+          'greet': 'Hello, __name__!',
+          'dummyButton': 'Pointless button',
+          'dummyButtonFor': 'Your very own pointless button, __name__!'
+        }
+      },
+      'de': {
+        'translation': {
+          'title': 'i18next-ko Beispiel',
+          'text': 'Dies ist ein Beispiel für i18next-ko. Wählen Sie eine Sprache:',
+          'greet': 'Hallo, __name__!',
+          'dummyButton': 'Sinnloser Knopf',
+          'dummyButtonFor': 'Dein ganz persönlicher sinnloser Knopf, __name__!'
+        }
+      }
+    }, 'en', ko);
+
+    function ExampleViewModel () {
+      var self = this;
+      self.language = ko.observable('en');
+      self.language.subscribe(function (value) {
+        i18nextko.setLanguage(value);
+      })
+
+      self.name = ko.observable('Jon Doe');
+    }
+
+    ko.applyBindings(new ExampleViewModel());
+  </script>
+</body>
+</html>
