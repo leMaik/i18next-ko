@@ -8,6 +8,19 @@ With this awkwardly named library, you can easily translate your
 [i18next]: http://i18next.com/
 [i18nextdoc]: http://i18next.com/pages/doc_features.html
 
+Installation
+============
+If you are using npm, you can get i18next-ko with `npm install i18next-ko`. It
+works like a charm with Browserify, just `require('i18next-ko')`.
+
+You can also use the [prebuilt standalone file][prebuilt] that works in every
+environment.
+
+Note that while i18next is included in the standalone build and as dependency in
+the npm package, KnockoutJS is not.
+
+[prebuilt]: https://raw.githubusercontent.com/leMaik/i18next-ko/master/lib/i18next-ko.js
+
 Usage
 =====
 
