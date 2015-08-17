@@ -1,8 +1,12 @@
 i18next-ko
 ==========
 With this awkwardly named library, you can easily translate your
-[KnockoutJS](ko) applications. It uses [i18next](i18n), so you may want to read
-[their documentation](i18ndoc) to know how to use variables and stuff.
+[KnockoutJS][ko] applications. It uses [i18next][i18next], so you may want to read
+[their documentation][i18nextdoc] to know how to use variables and stuff.
+
+[ko]: http://knockoutjs.com/
+[i18next]: http://i18next.com/
+[i18nextdoc]: http://i18next.com/pages/doc_features.html
 
 Usage
 =====
