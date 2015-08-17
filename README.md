@@ -90,7 +90,12 @@ You can use the binding in three different ways:
    updated whenever the language is changed or the value of any observable
    variable is changed.
 
+You may also get the underlying i18next object with `i18nextko.i18n`.
+
 Changing the language
 ---------------------
 The language can be changed with `i18nextko.setLanguage('your-language')`. This
 will update every translation, as documented above.
+
+Changing the language by using the `setLng` method of i18next directly will not
+update the bindings.

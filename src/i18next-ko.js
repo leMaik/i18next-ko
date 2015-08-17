@@ -65,7 +65,9 @@ var i18nextko = {
 
     ko.bindingHandlers['i18n'] = koBindingHandler;
     i18nextko.setLanguage(language);
-  }
+  },
+  
+  i18n: i18n
 };
 
 module.exports = i18nextko;
