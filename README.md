@@ -33,13 +33,13 @@ following parameters: `i18nextko.init(resourceStore, language, ko)`.
 ```
   {
     en:
-      translations: {
+      translation: {
         'testTranslation': 'Test translation'
       }
     },
 
     de: {
-      translations: {
+      translation: {
         'testTranslation': 'Test-Übersetzung'
       }
     }
