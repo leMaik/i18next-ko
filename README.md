@@ -13,6 +13,8 @@ Installation
 If you are using npm, you can get i18next-ko with `npm install i18next-ko`. It
 works like a charm with Browserify, just `require('i18next-ko')`.
 
+If you use bower, you can get i18next-ko with `bower install i18next-ko`.
+
 You can also use the [prebuilt standalone file][prebuilt] that works in every
 environment.
 
