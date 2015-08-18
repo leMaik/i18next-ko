@@ -1,8 +1,8 @@
 {
   "name": "i18next-ko",
-  "version": "1.1.0",
+  "version": "1.2.1",
   "description": "KnockoutJS bindings for i18next.",
-  "main": "src/i18next-ko.js",
+  "main": "lib/i18next-ko.bundle.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -26,6 +26,7 @@
     "coffee-script": "^1.9.3",
     "del": "^1.2.1",
     "gulp": "^3.9.0",
+    "gulp-rename": "^1.2.2",
     "vinyl-source-stream": "^1.1.0"
   }
 }
