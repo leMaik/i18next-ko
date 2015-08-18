@@ -1,6 +1,6 @@
 {
   "name": "i18next-ko",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "KnockoutJS bindings for i18next.",
   "main": "src/i18next-ko.bundle.js",
   "scripts": {
