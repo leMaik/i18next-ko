@@ -53,6 +53,9 @@ var i18nextko = {
     i18nextko._koCallbacks.forEach(function (c) {
       return c.call(undefined);
     });
+    if (typeof $ !== 'undefined') {
+      $('html').i18n();
+    }
   },
 
   init: function (resourceStore, language, knockout) {
@@ -66,7 +69,7 @@ var i18nextko = {
     ko.bindingHandlers['i18n'] = koBindingHandler;
     i18nextko.setLanguage(language);
   },
-  
+
   i18n: i18n
 };
 
