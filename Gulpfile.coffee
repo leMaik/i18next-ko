@@ -5,7 +5,6 @@ source = require 'vinyl-source-stream'
 browserify = require 'browserify'
 del = require 'del'
 rename = require 'gulp-rename'
-uglify = require 'gulp-uglify'
 
 gulp.task 'clean', (cb) ->
     del ['lib/**'], cb
