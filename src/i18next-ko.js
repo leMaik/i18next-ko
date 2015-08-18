@@ -1,4 +1,9 @@
-var i18n = require('i18next-client');
+var i18n;
+if (typeof require !== 'undefined') {
+  i18n = require('i18next-client');
+} else {
+  i18n = window.i18n;
+}
 var ko;
 
 var koBindingHandler = {
@@ -66,8 +71,12 @@ var i18nextko = {
     ko.bindingHandlers['i18n'] = koBindingHandler;
     i18nextko.setLanguage(language);
   },
-  
+
   i18n: i18n
 };
 
-module.exports = i18nextko;
+if (typeof module !== 'undefined') {
+  module.exports = i18nextko;
+} else {
+  window.i18nextko = i18nextko;
+}
