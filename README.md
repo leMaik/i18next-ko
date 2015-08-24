@@ -101,3 +101,9 @@ will update every translation, as documented above.
 
 Changing the language by using the `setLng` method of i18next directly will not
 update the bindings.
+
+Utility functions
+-----------------
+You can get a computed observable of a translation with `i18nextko.t()`. It
+works in the same way as `i18n.t` but is updated whenever the language is
+changed.
