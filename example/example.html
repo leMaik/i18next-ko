@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <title>i18next-ko Demo</title>
   <script src="http://ajax.aspnetcdn.com/ajax/knockout/knockout-3.3.0.js"></script>
-  <script src="../lib/i18next-ko.js"></script>
+  <script src="../lib/i18next-ko.bundle.js"></script>
 </head>
 
 <body>
@@ -24,8 +24,10 @@
   </p>
 
   <p>
-    <button data-bind="i18n: { 'html': 'dummyButton', 'title': { key: 'dummyButtonFor', options: { name: name } } }"
+    <button data-bind="i18n: { 'html': 'dummyButton', 'title': { key: 'dummyButtonFor', options: { name: name } } }"></button>
   </p>
+
+  <p data-bind="text: translatedVariable"></p>
 
   <script language="javascript">
     i18nextko.init({
@@ -35,7 +37,8 @@
           'text': 'This is an example for i18next-ko. Please select a language:',
           'greet': 'Hello, __name__!',
           'dummyButton': 'Pointless button',
-          'dummyButtonFor': 'Your very own pointless button, __name__!'
+          'dummyButtonFor': 'Your very own pointless button, __name__!',
+          'translatedVariable': 'This is a computed observable, that is updated on language changes.'
         }
       },
       'de': {
@@ -44,7 +47,8 @@
           'text': 'Dies ist ein Beispiel für i18next-ko. Wählen Sie eine Sprache:',
           'greet': 'Hallo, __name__!',
           'dummyButton': 'Sinnloser Knopf',
-          'dummyButtonFor': 'Dein ganz persönlicher sinnloser Knopf, __name__!'
+          'dummyButtonFor': 'Dein ganz persönlicher sinnloser Knopf, __name__!',
+          'translatedVariable': 'Dies ist ein computed observable, der sich beim Sprachwechsel aktualisiert.'
         }
       }
     }, 'en', ko);
@@ -57,6 +61,7 @@
       })
 
       self.name = ko.observable('Jon Doe');
+      self.translatedVariable = i18nextko.t('translatedVariable');
     }
 
     ko.applyBindings(new ExampleViewModel());
