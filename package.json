@@ -19,7 +19,7 @@
   "author": "leMaik",
   "license": "MIT",
   "dependencies": {
-    "i18next-client": "^1.10.2"
+    "i18next": "^3.4.3"
   },
   "devDependencies": {
     "browserify": "^11.0.1",
