@@ -55,7 +55,7 @@
     _koCallbacks: [],
 
     setLanguage: function (language) {
-      i18n.setLng(language);
+      i18n.changeLanguage(language);
       i18nextko._language(language);
       i18nextko._koCallbacks.forEach(function (c) {
         return c.call(undefined);
@@ -65,15 +65,15 @@
       }
     },
 
-    init: function (resourceStore, language, knockout, jquery) {
+    init: function (resourceStore, language, knockout, jquery, i18next_settings) {
       ko = knockout || window.ko;
       $ = jquery || window.$;
 
-      i18n.init({
-        compatibilityAPI: 'v1',
-        lng: language || 'en',
-        resStore: resourceStore
-      });
+      settings = i18next_settings || {}
+      settings.lng = language || 'en'
+      settings.resources = language || 'en'
+
+      i18n.init(settings);
 
       ko.bindingHandlers['i18n'] = koBindingHandler;
       i18nextko._language = ko.observable(language);
