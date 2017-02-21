@@ -71,7 +71,7 @@
 
       settings = i18next_settings || {}
       settings.lng = language || 'en'
-      settings.resources = language || 'en'
+      settings.resources = resourceStore
 
       i18n.init(settings);
 
