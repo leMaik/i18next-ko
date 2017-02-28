@@ -68,13 +68,18 @@ i18next-ko comes with exactly one new KnockoutJS binding: The `i18n` binding.
 
 You can use the binding in three different ways:
 
-1. Use a string:
+1. Use the tag content:
+   `<span data-bind="i18n">This sentence will be translated</span>`
+
+   It is automatically updated whenever the language is changed.
+
+2. Use a string:
    `data-bind="i18n: 'testTranslation'"` sets the content of the
    element to the translation with the key `testTranslation`.
 
    It is automatically updated whenever the language is changed.
 
-2. Use a key and add variables:
+3. Use a key and add variables:
    `data-bind="i18n: { key: 'greeting', options: { name: name } }"`
    sets the content of the element to the translation with the given key.
 
@@ -84,7 +89,7 @@ You can use the binding in three different ways:
    It is automatically updated whenever the language is changed or the value of
    any observable variable is changed.
 
-3. Mix both approaches and bind multiple attributes:
+4. Mix both approaches and bind multiple attributes:
    `data-bind="i18n: { 'html': 'testTranslation', 'title': { key: 'greeting',
    options: { name: name } } }"` sets the content of the element to the
    translation with the key `testTranslation`.

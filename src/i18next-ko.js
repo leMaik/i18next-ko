@@ -1,3 +1,11 @@
+/*
+
+https://github.com/leMaik/i18next-ko/
+Usage Examples:
+<span data-bind="i18n">This sentence should be translated.</span>
+<span data-bind="i18n: 'This sentence should be translated.'"></span>
+<span data-bind="i18n: { key: '{{ who }} are {{ what }}', options: { who: 'Translations', what: 'fun' } }"></span>
+*/
 (function () {
   var i18n;
   if (typeof require !== 'undefined') {
@@ -23,6 +31,9 @@
 
     update: function (element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
       var value = ko.toJS(valueAccessor());
+      if(value === undefined){
+        value = element.innerText.trim();
+      }
       if (typeof value === 'string') {
         element.innerHTML = i18n.t(value);
       } else if (value.key) {
