@@ -34,7 +34,7 @@ following parameters: `i18nextko.init(resourceStore, language, ko)`.
 * The `resourceStore` is a i18next resource store. It looks like this:
 ```
   {
-    en:
+    en: {
       translation: {
         'testTranslation': 'Test translation'
       }
