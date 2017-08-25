@@ -29,7 +29,7 @@ Usage
 Initialization
 --------------
 To initialize i18next-ko, you need to call `i18nextko.init()`. It takes the
-following parameters: `i18nextko.init(resourceStore, language, ko)`.
+following parameters: `i18nextko.init(resourceStore, language, ko, jquery, i18next_settings)`.
 
 * The `resourceStore` is a i18next resource store. It looks like this:
 ```
@@ -54,6 +54,10 @@ following parameters: `i18nextko.init(resourceStore, language, ko)`.
   it may solve some issues if you use Browserify and have some dependencies that
   require different versions of KnockoutJS.
   Defaults to `window.ko`.
+* You may set `jquery` to your jquery object. Defaults to `window.$`.
+* The `i18next_settings` is an object containing extra custom settings to be sent to i18next.
+  For example, to use Key based fallback, you should use `{nsSeparator: false, keySeparator: false}`.
+  Defaults to no extra settings.
 
 Note that the i18nextko object basically is a singleton. Once you initialized
 it, the translations and the `i18n` binding will be available everywhere.
@@ -64,13 +68,18 @@ i18next-ko comes with exactly one new KnockoutJS binding: The `i18n` binding.
 
 You can use the binding in three different ways:
 
-1. Use a string:
+1. Use the tag content:
+   `<span data-bind="i18n">This sentence will be translated</span>`
+
+   It is automatically updated whenever the language is changed.
+
+2. Use a string:
    `data-bind="i18n: 'testTranslation'"` sets the content of the
    element to the translation with the key `testTranslation`.
 
    It is automatically updated whenever the language is changed.
 
-2. Use a key and add variables:
+3. Use a key and add variables:
    `data-bind="i18n: { key: 'greeting', options: { name: name } }"`
    sets the content of the element to the translation with the given key.
 
@@ -80,7 +89,7 @@ You can use the binding in three different ways:
    It is automatically updated whenever the language is changed or the value of
    any observable variable is changed.
 
-3. Mix both approaches and bind multiple attributes:
+4. Mix both approaches and bind multiple attributes:
    `data-bind="i18n: { 'html': 'testTranslation', 'title': { key: 'greeting',
    options: { name: name } } }"` sets the content of the element to the
    translation with the key `testTranslation`.

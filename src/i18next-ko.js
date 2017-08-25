@@ -1,3 +1,11 @@
+/*
+
+https://github.com/leMaik/i18next-ko/
+Usage Examples:
+<span data-bind="i18n">This sentence should be translated.</span>
+<span data-bind="i18n: 'This sentence should be translated.'"></span>
+<span data-bind="i18n: { key: '{{ who }} are {{ what }}', options: { who: 'Translations', what: 'fun' } }"></span>
+*/
 (function () {
   var i18n;
   if (typeof require !== 'undefined') {
@@ -23,6 +31,9 @@
 
     update: function (element, valueAccessor, allBindingsAccessor, viewModel, bindingContext) {
       var value = ko.toJS(valueAccessor());
+      if(value === undefined){
+        value = element.innerText.trim();
+      }
       if (typeof value === 'string') {
         element.innerHTML = i18n.t(value);
       } else if (value.key) {
@@ -55,7 +66,7 @@
     _koCallbacks: [],
 
     setLanguage: function (language) {
-      i18n.setLng(language);
+      i18n.changeLanguage(language);
       i18nextko._language(language);
       i18nextko._koCallbacks.forEach(function (c) {
         return c.call(undefined);
@@ -65,15 +76,15 @@
       }
     },
 
-    init: function (resourceStore, language, knockout, jquery) {
+    init: function (resourceStore, language, knockout, jquery, i18next_settings) {
       ko = knockout || window.ko;
       $ = jquery || window.$;
 
-      i18n.init({
-        compatibilityAPI: 'v1',
-        lng: language || 'en',
-        resStore: resourceStore
-      });
+      settings = i18next_settings || {}
+      settings.lng = language || 'en'
+      settings.resources = resourceStore
+
+      i18n.init(settings);
 
       ko.bindingHandlers['i18n'] = koBindingHandler;
       i18nextko._language = ko.observable(language);
