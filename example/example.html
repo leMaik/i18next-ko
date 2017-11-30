@@ -24,7 +24,11 @@
   </p>
 
   <p>
-    <button data-bind="i18n: { 'html': 'dummyButton', 'title': { key: 'dummyButtonFor', options: { name: name } } }"></button>
+    <button data-bind="i18n: { html: 'dummyButton', title: { key: 'dummyButtonFor', options: { name: name } } }"></button>
+  </p>
+
+  <p>
+    <span data-bind="i18n: { text: 'dummySpan' }"></span>
   </p>
 
   <p data-bind="text: translatedVariable"></p>
@@ -35,9 +39,10 @@
         'translation': {
           'title': 'i18next-ko Example',
           'text': 'This is an example for i18next-ko. Please select a language:',
-          'greet': 'Hello, __name__!',
+          'greet': 'Hello, {{name}}!',
           'dummyButton': 'Pointless button',
-          'dummyButtonFor': 'Your very own pointless button, __name__!',
+          'dummyButtonFor': 'Your very own pointless button, {{name}}!',
+          'dummySpan': 'Your very own pointless <span>',
           'translatedVariable': 'This is a computed observable, that is updated on language changes.'
         }
       },
@@ -45,9 +50,9 @@
         'translation': {
           'title': 'i18next-ko Beispiel',
           'text': 'Dies ist ein Beispiel für i18next-ko. Wählen Sie eine Sprache:',
-          'greet': 'Hallo, __name__!',
+          'greet': 'Hallo, {{name}}!',
           'dummyButton': 'Sinnloser Knopf',
-          'dummyButtonFor': 'Dein ganz persönlicher sinnloser Knopf, __name__!',
+          'dummyButtonFor': 'Dein ganz persönlicher sinnloser Knopf, {{name}}!',
           'translatedVariable': 'Dies ist ein computed observable, der sich beim Sprachwechsel aktualisiert.'
         }
       }

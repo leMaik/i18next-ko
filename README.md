@@ -74,19 +74,19 @@ You can use the binding in three different ways:
    `data-bind="i18n: { key: 'greeting', options: { name: name } }"`
    sets the content of the element to the translation with the given key.
 
-   The variable `__name__` in the translation is replaced with the value of the
+   The variable `{{name}}` in the translation is replaced with the value of the
    `name` property of the view model.
 
    It is automatically updated whenever the language is changed or the value of
    any observable variable is changed.
 
 3. Mix both approaches and bind multiple attributes:
-   `data-bind="i18n: { 'html': 'testTranslation', 'title': { key: 'greeting',
+   `data-bind="i18n: { html: 'testTranslation', title: { key: 'greeting',
    options: { name: name } } }"` sets the content of the element to the
    translation with the key `testTranslation`.
 
    The `title` attribute to the translation with the key `greeting`, using the
-   `name` property of the view model for the variable `__name__`.
+   `name` property of the view model for the variable `{{name}}`.
 
    You can use as many attributes as you want. Translations are automatically
    updated whenever the language is changed or the value of any observable
