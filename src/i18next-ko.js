@@ -17,7 +17,7 @@
         }
       });
       i18nextko._koElements.push(element);
-      i18nextko._koCallbacks.push(ko.bindingHandlers['i18n'].update.bind(undefined, element, valueAccessor, allBindingsAccessor, viewModel, bindingContext));
+      i18nextko._koCallbacks.push(ko.bindingHandlers.i18n.update.bind(undefined, element, valueAccessor, allBindingsAccessor, viewModel, bindingContext));
       koBindingHandler.update(element, valueAccessor, allBindingsAccessor, viewModel, bindingContext);
     },
 
@@ -37,10 +37,14 @@
           else {
             translation = i18n.t(options.key, ko.toJS(options.options));
           }
-          if (attr == 'html') {
-            element.innerHTML = translation;
-          }
-          else {
+          switch (attr) {
+          case 'html':
+            ko.utils.setHtml(element, translation);
+            break;
+          case 'text':
+            ko.utils.setTextContent(element, translation);
+            break;
+          default:
             var div = document.createElement('div');
             div.innerHTML = translation;
             element.setAttribute(attr, div.innerText);
@@ -55,29 +59,32 @@
     _koCallbacks: [],
 
     setLanguage: function (language) {
-      i18n.setLng(language);
-      i18nextko._language(language);
-      i18nextko._koCallbacks.forEach(function (c) {
-        return c.call(undefined);
+      i18n.changeLanguage(language, function () {
+        i18nextko._language(language);
+        i18nextko._koCallbacks.forEach(function (c) {
+          return c.call(undefined);
+        });
+        if (typeof $ !== 'undefined' && typeof $.fn.i18n !== 'undefined') {
+          $('html').i18n();
+        }
       });
-      if (typeof $ !== 'undefined' && typeof $.fn.i18n !== 'undefined') {
-        $('html').i18n();
-      }
     },
 
-    init: function (resourceStore, language, knockout, jquery) {
+    init: function (resources, language, knockout, jquery, options) {
       ko = knockout || window.ko;
       $ = jquery || window.$;
 
-      i18n.init({
-        compatibilityAPI: 'v1',
-        lng: language || 'en',
-        resStore: resourceStore
-      });
-
-      ko.bindingHandlers['i18n'] = koBindingHandler;
-      i18nextko._language = ko.observable(language);
-      i18nextko.setLanguage(language);
+      i18n.init(
+        ko.utils.extend(options || {}, {
+          lng: language || 'en',
+          resources: resources
+        }),
+        function () {
+          ko.bindingHandlers.i18n = koBindingHandler;
+          i18nextko._language = ko.observable(language);
+          i18nextko.setLanguage(language);
+        }
+      );
     },
 
     t: function () {
